@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="{% static 'images/logo.jpg' %}" rel="icon"/>
+<title>{% block title %}{% endblock %}</title>
+<script>
+  $(document).ready(function () {
+    $('#main,#p22').css("font-family","lato");
+  })
+</script>
+<style>
+body {
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    background-color: #f1f1f1;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: coral;
+   color: white;
+   text-align: center;
+}
+.navbar-centered  {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+<script type="text/javascript" src="{% static 'js/date_time.js' %}"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid pt-3 my-3 bg-dark text-white" style="background-color: #373a3c">
+    <div class="navbar-header">
+    </div>
+        <ul class="nav navbar-nav">
+          <li><a href="{% url 'home' %}">Home</a></li>
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'fees_transactions' %}">Fees Collections</a></li>
+              <li><a href="{% url 'add_student_fees' %}" target="_blank">Add Student</a></li>
+        </ul>
+            {% endif %}
+        <ul class="navbar-nav nav navbar-centered">
+            <span id="date_time" style="color: white"></span>
+            <script type="text/javascript">window.onload = date_time('date_time');</script>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/admin" target="_blank"><span class="glyphicon glyphicon-user"></span>  Admin</a></li>
+            {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span> logout</a></li>
+            {% else %}
+          <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            {% endif %}
+        </ul>
+  </div>
+</nav>
+<center>
+    <span id="date_time"></span>
+     <script type="text/javascript">window.onload = date_time('date_time');</script>
+</center>
+{% block body %}
+
+{% endblock %}
+
+<br>
+<div class="container-fluid footer">
+    <span class="copyright">© Copyright - Bethany College of Nursing, Bhilai. </span>
+</div>

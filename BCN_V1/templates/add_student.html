@@ -1,0 +1,470 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Add New Student | Bethany College of Nursing{% endblock %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/fixed button.css' %}">
+<link rel="stylesheet" href="{% static 'css/fixed anchor.css' %}">
+<link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="//cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/js/bootstrap-datetimepicker.min.js"></script>
+<div class="container-fluid">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    <div class="row">
+      <div class="col-md-4">
+          <label for="id_student_name">Student Name:</label>
+          <input type="text" name="student_name" maxlength="100" required id="id_student_name">
+      </div>
+      <div class="col-md-4">
+          <label for="id_fathers_name">Father's Name:</label>
+          <input type="text" name="fathers_name" maxlength="100" required id="id_fathers_name">
+      </div>
+      <div class="col-md-4">
+          <label for="id_dob">Date of Birth:</label>
+          <input type="date" name="dob" required id="id_dob" placeholder="dd-mm-yyyy" data-date-format="DD/MM/YYYY">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-4">
+          <label for="id_gender">Gender:</label>
+            <select name="gender" required id="id_gender">
+              <option value="" selected>---------</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+      </div>
+      <div class="col-md-4">
+          <label for="id_session_of_add">Session:</label>
+          <input type="text" name="session_of_add" maxlength="301" required id="id_session_of_add">
+      </div>
+      <div class="col-md-4">
+          <label for="id_course_duration">Course Duration:</label>
+          <select name="course_duration" required id="id_course_duration">
+            <option value="" selected>Duration</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_course">Course:</label>
+          <input type="text" name="course" maxlength="30" required="" id="id_course">
+      </div>
+      <div class="col-md-3">
+          <label for="id_branch">Branch:</label>
+          <input type="text" name="branch" maxlength="30" required="" id="id_branch">
+
+      </div>
+      <div class="col-md-3">
+          <label for="id_contact">Parent's contact:</label>
+          <input type="number" name="contact" required="" id="id_contact">
+      </div>
+      <div class="col-md-3">
+        <label for="id_email">Email:</label>
+        <input type="email" name="email" maxlength="100" required="" id="id_email">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+        <label for="id_bus">Bus Service:</label>
+          <select name="bus" required id="id_bus">
+            <option value="" selected>Yes/No</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+      </div>
+      <div class="col-md-3">
+          <label for="id_hostel">Hostel:</label>
+            <select name="hostel" required id="id_hostel">
+                <option value="" selected>Yes/No</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+      </div>
+        <div class="col-md-3">
+          <label for="id_mess">Mess:</label>
+            <select name="mess" required id="id_mess">
+                <option value="" selected>Yes/No</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="id_clinic">Clinical:</label>
+            <select name="clinic" required id="id_clinic">
+                <option value="" selected>Yes/No</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+    </div>
+    <br><hr>
+    <h2 id="first">First Year Fees</h2>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_f_tuition_fee">First Year Tuition Fees:</label>
+          <input type="number" name="f_tuition_fee" step="any" required id="id_f_tuition_fee">
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_development_fee">First Year Development Fees:</label>
+          <input type="number" name="f_development_fee" step="any" required id="id_f_development_fee">
+      </div>
+      <div class="col-md-3">
+          <label for="id_admission_fee">Admission fee:</label>
+          <input type="number" name="admission_fee" step="any" required id="id_admission_fee">
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_lab_computer_fee">First Year Lab, Computer &amp; A/V Aids Fees:</label>
+          <input type="number" name="f_lab_computer_fee" step="any" required id="id_f_lab_computer_fee">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_f_library">First Year Library &amp; Magazine :</label>
+          <input type="number" name="f_library" step="any" required id="id_f_library">
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_sports_activities">First Year Sports &amp; Extracurricular activities :</label>
+          <input type="number" name="f_sports_activities" step="any" required id="id_f_sports_activities">
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_college_exam">First Year College Exam Fees:</label>
+          <input type="number" name="f_college_exam" step="any" required id="id_f_college_exam">
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_student_welfare">First Year Student’s Welfare:</label>
+          <input type="number" name="f_student_welfare" step="any" required id="id_f_student_welfare">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_f_bus_fees">First Year Conveyance for Clinical (Bus):</label>
+          <input type="number" name="f_bus_fees" step="any" required id="id_f_bus_fees">
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_hostel_fees">First Year Hostel Fees:</label>
+          <input type="number" name="f_hostel_fees" step="any" required id="id_f_hostel_fees">
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_mess_fees">First Year Mess Fees:</label>
+          <input type="number" name="f_mess_fees" step="any" required id="id_f_mess_fees">
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_clinic_fees">First Year Clinical fee:</label>
+          <input type="number" name="f_clinic_fees" step="any" required id="id_f_clinic_fees">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_caution_fee">Caution Deposit (To be refunded on completion of course):</label>
+          <input type="number" name="caution_fee" step="any" required id="id_caution_fee">
+      </div>
+      <div class="col-md-3">
+          <label for="id_clerical_fee">CLERICAL FEE:</label>
+          <input type="number" name="clerical_fee" step="any" required id="id_clerical_fee">
+      </div>
+      <div class="col-md-3">
+          <label for="id_med_equip">MED.EQP:</label>
+          <input type="number" name="med_equip" step="any" required id="id_med_equip">
+      </div>
+      <div class="col-md-3">
+          <label for="id_uniform_fee">Uniform fee:</label>
+          <input type="number" name="uniform_fee" step="any" required id="id_uniform_fee">
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_wel_kit">Wel kit:</label>
+          <input type="number" name="wel_kit" step="any" required id="id_wel_kit">
+      </div>
+      <div class="col-md-3">
+          <label for="id_prac_rec">Prac rec:</label>
+          <input type="number" name="prac_rec" step="any" required id="id_prac_rec">
+      </div>
+    </div>
+    <br><hr>
+    <div class="row">
+        <div class="col-md-2">
+          <label for="id_f_actual_fees">First Year Actual Amount:</label>
+          <input type="number" name="f_actual_fees" step="any" required id="id_f_actual_fees">
+        </div>
+        <div class="col-md-2">
+          <label for="id_f_concession">Concession:</label>
+          <input type="number" name="f_concession" step="any" required id="id_f_concession">
+        </div>
+        <div class="col-md-2">
+          <label for="id_f_balance">First year Balance:</label>
+          <input type="number" name="f_balance" step="any" required id="id_f_balance">
+        </div>
+        <div class="col-md-2">
+            <label for="id_f_currently_paid">Currently Paid:</label>
+            <input type="number" name="f_currently_paid" step="any" required id="id_f_currently_paid">
+        </div>
+        <div class="col-md-2">
+            <label for="id_f_net_pay">Net Payable of First Year Fees:</label>
+            <input type="number" name="f_net_pay" step="any" required id="id_f_net_pay">
+        </div>
+    </div>
+    <br><hr>
+    <h2 id="second">Second Year Fees</h2>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_s_tuition_fee">Second Year Tuition Fees:</label>
+          <input type="number" name="s_tuition_fee" step="any" required id="id_s_tuition_fee">
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_development_fee">Second Year Development Fees:</label>
+          <input type="number" name="s_development_fee" step="any" required id="id_s_development_fee">
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_lab_computer_fee">Second Year Lab, Computer &amp; A/V Aids Fees:</label>
+          <input type="number" name="s_lab_computer_fee" step="any" required id="id_s_lab_computer_fee">
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_library">Second Year Library &amp; Magazine :</label>
+          <input type="number" name="s_library" step="any" required id="id_s_library">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_s_sports_activities">Second Year Sports &amp; Extracurricular activities :</label>
+          <input type="number" name="s_sports_activities" step="any" required id="id_s_sports_activities">
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_college_exam">Second Year College Exam Fees:</label>
+          <input type="number" name="s_college_exam" step="any" required id="id_s_college_exam">
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_student_welfare">Second Year Student’s Welfare:</label>
+          <input type="number" name="s_student_welfare" step="any" required id="id_s_student_welfare">
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_bus_fees">Second Year Conveyance for Clinical (Bus):</label>
+          <input type="number" name="s_bus_fees" step="any" required id="id_s_bus_fees">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_s_hostel_fees">Second Year Hostel Fees:</label>
+          <input type="number" name="s_hostel_fees" step="any" required id="id_s_hostel_fees">
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_mess_fees">Second Year Mess Fees:</label>
+          <input type="number" name="s_mess_fees" step="any" required id="id_s_mess_fees">
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_clinic_fees">Second Year Clinical Fee:</label>
+          <input type="number" name="s_clinic_fees" step="any" required id="id_s_clinic_fees">
+      </div>
+    </div>
+    <br><hr>
+    <div class="row">
+        <div class="col-md-2">
+            <label for="id_s_actual_fees">Second Year Actual Amount:</label>
+            <input type="number" name="s_actual_fees" step="any" required id="id_s_actual_fees">
+        </div>
+        <div class="col-md-2">
+            <label for="id_s_concession">Concession:</label>
+            <input type="number" name="s_concession" step="any" required id="id_s_concession">
+        </div>
+        <div class="col-md-2">
+            <label for="id_s_balance">Second year Balance:</label>
+            <input type="number" name="s_balance" step="any" required id="id_s_balance">
+        </div>
+        <div class="col-md-2">
+            <label for="id_s_currently_paid">Currently Paid:</label>
+            <input type="number" name="s_currently_paid" step="any" required id="id_s_currently_paid">
+        </div>
+        <div class="col-md-2">
+            <label for="id_s_net_pay">Net Payable of Second Year Fees:</label>
+            <input type="number" name="s_net_pay" step="any" required id="id_s_net_pay">
+        </div>
+    </div>
+    <br><hr>
+    <h2 id="third">Third Year Fees</h2>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_t_tuition_fee">Third Year Tuition Fees:</label>
+          <input type="number" name="t_tuition_fee" step="any" required id="id_t_tuition_fee">
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_development_fee">Third Year Development Fees:</label>
+          <input type="number" name="t_development_fee" step="any" required id="id_t_development_fee">
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_lab_computer_fee">Third Year Lab, Computer &amp; A/V Aids Fees:</label>
+          <input type="number" name="t_lab_computer_fee" step="any" required id="id_t_lab_computer_fee">
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_library">Third Year Library &amp; Magazine :</label>
+          <input type="number" name="t_library" step="any" required id="id_t_library">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_t_sports_activities">Third Year Sports &amp; Extracurricular activities :</label>
+          <input type="number" name="t_sports_activities" step="any" required id="id_t_sports_activities">
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_college_exam">Third Year College Exam Fees:</label>
+          <input type="number" name="t_college_exam" step="any" required id="id_t_college_exam">
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_student_welfare">Third Year Student’s Welfare:</label>
+          <input type="number" name="t_student_welfare" step="any" required id="id_t_student_welfare">
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_bus_fees">Third Year Conveyance for Clinical (Bus):</label>
+          <input type="number" name="t_bus_fees" step="any" required id="id_t_bus_fees">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_t_hostel_fees">Third Year Hostel Fees:</label>
+          <input type="number" name="t_hostel_fees" step="any" required id="id_t_hostel_fees">
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_mess_fees">Third Year Mess Fees:</label>
+          <input type="number" name="t_mess_fees" step="any" required id="id_t_mess_fees">
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_clinic_fees">Third Year Clinical Fee:</label>
+          <input type="number" name="t_clinic_fees" step="any" required id="id_t_clinic_fees">
+      </div>
+    </div>
+    <br><hr>
+    <div class="row">
+        <div class="col-md-2">
+            <label for="id_t_actual_fees">Third Year Actual Amount:</label>
+            <input type="number" name="t_actual_fees" step="any" required id="id_t_actual_fees">
+        </div>
+        <div class="col-md-2">
+            <label for="id_t_concession">Concession:</label>
+            <input type="number" name="t_concession" step="any" required id="id_t_concession">
+        </div>
+        <div class="col-md-2">
+            <label for="id_t_balance">Third year Balance:</label>
+            <input type="number" name="t_balance" step="any" required id="id_t_balance">
+        </div>
+        <div class="col-md-2">
+            <label for="id_t_currently_paid">Currently Paid:</label>
+            <input type="number" name="t_currently_paid" step="any" required id="id_t_currently_paid">
+        </div>
+        <div class="col-md-2">
+            <label for="id_t_net_pay">Net Payable of Third Year Fees:</label>
+            <input type="number" name="t_net_pay" step="any" required id="id_t_net_pay">
+        </div>
+    </div>
+    <br><hr>
+    <h2 id="fourth">Fourth Year Fees</h2>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_fo_tuition_fee">Fourth Year Tuition Fees:</label>
+          <input type="number" name="fo_tuition_fee" step="any" required id="id_fo_tuition_fee">
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_development_fee">Fourth Year Development Fees:</label>
+          <input type="number" name="fo_development_fee" step="any" required id="id_fo_development_fee">
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_lab_computer_fee">Fourth Year Lab, Computer &amp; A/V Aids Fees:</label>
+          <input type="number" name="fo_lab_computer_fee" step="any" required id="id_fo_lab_computer_fee">
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_library">Fourth Year Library &amp; Magazine :</label>
+          <input type="number" name="fo_library" step="any" required id="id_fo_library">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_fo_sports_activities">Fourth Year Sports &amp; Extracurricular activities :</label>
+          <input type="number" name="fo_sports_activities" step="any" required id="id_fo_sports_activities">
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_college_exam">Fourth Year College Exam Fees:</label>
+          <input type="number" name="fo_college_exam" step="any" required id="id_fo_college_exam">
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_student_welfare">Fourth Year Student’s Welfare:</label>
+          <input type="number" name="fo_student_welfare" step="any" required id="id_fo_student_welfare">
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_bus_fees">Fourth Year Conveyance for Clinical (Bus):</label>
+          <input type="number" name="fo_bus_fees" step="any" required id="id_fo_bus_fees">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_fo_hostel_fees">Fourth Year Hostel Fees:</label>
+          <input type="number" name="fo_hostel_fees" step="any" required id="id_fo_hostel_fees">
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_mess_fees">Fourth Year Mess Fees:</label>
+          <input type="number" name="fo_mess_fees" step="any" required id="id_fo_mess_fees">
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_clinic_fees">Fourth Year Clinical Fee:</label>
+          <input type="number" name="fo_clinic_fees" step="any" required id="id_fo_clinic_fees">
+      </div>
+    </div>
+    <br><hr>
+    <div class="row">
+        <div class="col-md-2">
+            <label for="id_fo_actual_fees">Fourth Year Actual Amount:</label>
+            <input type="number" name="fo_actual_fees" step="any" required id="id_fo_actual_fees">
+        </div>
+        <div class="col-md-2">
+            <label for="id_fo_concession">Concession:</label>
+            <input type="number" name="fo_concession" step="any" required id="id_fo_concession">
+        </div>
+        <div class="col-md-2">
+            <label for="id_fo_balance">Fourth year Balance:</label>
+            <input type="number" name="fo_balance" step="any" required id="id_fo_balance">
+        </div>
+        <div class="col-md-2">
+            <label for="id_fo_currently_paid">Currently Paid:</label>
+            <input type="number" name="fo_currently_paid" step="any" required id="id_fo_currently_paid">
+        </div>
+        <div class="col-md-2">
+            <label for="id_fo_net_pay">Net Payable of Fourth Year Fees:</label>
+            <input type="number" name="fo_net_pay" step="any" required id="id_fo_net_pay">
+        </div>
+    </div>
+    <br><hr>
+        <div class="content" id="mybutton">
+            <button class="feedback button" type="submit" value="submit">Save Student</button>
+        </div><br>
+        <div class="content scroll button" id="myanchor">
+            <a class=" scroll button" href="#first">First Year</a>
+            <a class=" scroll button" href="#second">Second Year</a>
+            <a class=" scroll button" href="#third">Third Year</a>
+            <a class=" scroll button" href="#fourth">Fourth Year</a>
+        </div><br>
+    </form>
+</div>
+{% endblock %}

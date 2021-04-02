@@ -1,0 +1,432 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ show.student_name }} Details | Bethany College of Nursing{% endblock %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/fixed button.css' %}">
+<link rel="stylesheet" href="{% static 'css/fixed anchor.css' %}">
+<div class="container" >
+    <center>
+        <h2>
+            <B>
+                 Details of {{ show.student_name }}
+                <hr style="height:2px; border-width:0; color:gray; background-color:gray">
+            </B>
+        </h2>
+    </center>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_student_name">Student Name:</label>
+          {{ show.student_name }}
+      </div>
+      <div class="col-md-3">
+          <label for="id_fathers_name">Father's Name:</label>
+          {{show.fathers_name}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_dob">Date of Birth:</label>
+          {{show.dob}}
+      </div>
+        <div class="col-md-3">
+          <label for="id_gender">Gender:</label>
+            {{show.gender}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_course">Course:</label>
+          {{show.course}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_branch">Branch:</label>
+          {{show.branch}}
+      </div>
+          <div class="col-md-3">
+          <label for="id_contact">Parent's contact:</label>
+          {{show.contact}}
+      </div>
+      <div class="col-md-3">
+        <label for="id_email">Email:</label>
+        {{show.email}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_session_of_add">Session:</label>
+          {{show.session_of_add}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_year">Duration:</label>
+          {{show.course_duration}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label for="id_bus">Bus Service:</label>
+          {{show.bus}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_hostel">Hostel:</label>
+            {{show.hostel}}
+      </div>
+        <div class="col-md-2">
+            <label for="id_mess">Mess:</label>
+                {{show.mess}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_clinic">Clinical:</label>
+                {{show.clinic}}
+        </div>
+    </div>
+</div>
+<hr style="height:1px; border-width:1px; color:gray; background-color:gray">
+<div class="container-fluid">
+  <center><ul class="nav nav-tabs nav-justified" style="align-items: center">
+    <li class="active" ><a data-toggle="tab" href="#firstyr">First Year</a></li>
+    <li><a data-toggle="tab" href="#secondyr">Second Year</a></li>
+    <li><a data-toggle="tab" href="#thirdyr">Third Year</a></li>
+    <li><a data-toggle="tab" href="#fourthyr">Fourth Year</a></li>
+  </ul></center>
+  <div class="tab-content">
+    <div id="firstyr" class="tab-pane fade in active">
+    <center><h2 id="first"><a href="{% url 'post_edit' pk=show.pk %}" target="_blank">First Year Fees</a></h2></center>
+    <hr style="height:1px; border-width:1px; color:gray; background-color:gray">
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_f_tuition_fee">Tuition Fees:</label>
+          {{show.f_tuition_fee}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_development_fee">Development Fees:</label>
+          {{show.f_development_fee}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_admission_fee">Admission fee:</label>
+          {{show.admission_fee}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_lab_computer_fee">Lab, Computer &amp; A/V Aids Fees:</label>
+          {{show.f_lab_computer_fee}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_f_library">Library &amp; Magazine :</label>
+          {{show.f_library}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_sports_activities">Sports &amp; Extracurricular activities :</label>
+          {{show.f_sports_activities}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_college_exam">College Exam Fees:</label>
+          {{show.f_college_exam}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_student_welfare">Student's Welfare:</label>
+          {{show.f_student_welfare}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_f_bus_fees">Conveyance for Clinical (Bus):</label>
+          {{show.f_bus_fees}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_hostel_fees">Hostel Fees:</label>
+          {{show.f_hostel_fees}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_mess_fees">Mess Fees:</label>
+          {{show.f_mess_fees}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_f_clinic_fees">Clinical fee:</label>
+          {{show.f_clinic_fees}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_caution_fee">Caution Deposit:</label>
+          {{show.caution_fee}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_clerical_fee">CLERICAL FEE:</label>
+          {{show.clerical_fee}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_med_equip">MED.EQP:</label>
+          {{show.med_equip}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_uniform_fee">Uniform fee:</label>
+          {{show.uniform_fee}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_wel_kit">Wel kit:</label>
+          {{show.wel_kit}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_prac_rec">Prac rec:</label>
+          {{show.prac_rec}}
+      </div>
+    </div><br>
+    <div class="row">
+        <div class="col-md-2">
+          <label for="id_f_actual_fees">Actual Amount:</label>
+          {{show.f_actual_fees}}
+        </div>
+        <div class="col-md-2">
+          <label for="id_f_concession">Concession:</label>
+          {{show.f_concession}}
+        </div>
+        <div class="col-md-2">
+          <label for="id_f_balance">Balance:</label>
+          {{show.f_balance}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_f_currently_paid">Currently Paid:</label>
+            {{show.f_currently_paid}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_f_net_pay">Net Payable Amount:</label>
+            {{show.f_net_pay}}
+        </div>
+    </div>
+    </div>
+    <div id="secondyr" class="tab-pane fade">
+        <center><h2 id="second"><a href="{% url 'post_edit' pk=show.pk %}" target="_blank">Second Year Fees</a></h2></center>
+    <hr style="height:1px; border-width:1px; color:gray; background-color:gray">
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_s_tuition_fee">Tuition Fees:</label>
+          {{show.s_tuition_fee}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_development_fee">Development Fees:</label>
+          {{show.s_development_fee}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_lab_computer_fee">Lab, Computer &amp; A/V Aids Fees:</label>
+          {{show.s_lab_computer_fee}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_library">Library &amp; Magazine :</label>
+          {{show.s_library}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_s_sports_activities">Sports &amp; Extracurricular activities :</label>
+          {{show.s_sports_activities}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_college_exam">College Exam Fees:</label>
+          {{show.s_college_exam}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_student_welfare">Student's Welfare:</label>
+          {{show.s_student_welfare}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_bus_fees">Conveyance for Clinical (Bus):</label>
+         {{show.s_bus_fees}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_s_hostel_fees">Hostel Fees:</label>
+          {{show.s_hostel_fees}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_mess_fees">Mess Fees:</label>
+          {{show.s_mess_fees}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_s_clinic_fees">Clinical Fee:</label>
+          {{show.s_clinic_fees}}
+      </div>
+    </div><br>
+    <div class="row">
+        <div class="col-md-2">
+            <label for="id_s_actual_fees">Actual Amount:</label>
+            {{show.s_actual_fees}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_s_concession">Concession:</label>
+            {{show.s_concession}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_s_balance">Balance:</label>
+            {{show.s_balance}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_s_currently_paid">Currently Paid:</label>
+            {{show.s_currently_paid}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_s_net_pay">Net Payable Amount:</label>
+            {{show.s_net_pay}}
+        </div>
+    </div>
+    </div>
+    <div id="thirdyr" class="tab-pane fade">
+        <center><h2 id="third"><a href="{% url 'post_edit' pk=show.pk %}" target="_blank">Third Year Fees</a></h2></center>
+    <hr style="height:1px; border-width:1px; color:gray; background-color:gray">
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_t_tuition_fee">Tuition Fees:</label>
+          {{show.t_tuition_fee}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_development_fee">Development Fees:</label>
+          {{show.t_development_fee}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_lab_computer_fee">Lab, Computer &amp; A/V Aids Fees:</label>
+          {{show.t_lab_computer_fee}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_library">Library &amp; Magazine :</label>
+          {{show.t_library}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_t_sports_activities">Sports &amp; Extracurricular activities :</label>
+          {{show.t_sports_activities}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_college_exam">College Exam Fees:</label>
+         {{show.t_college_exam}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_student_welfare">Student's Welfare:</label>
+          {{show.t_student_welfare}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_bus_fees">Conveyance for Clinical (Bus):</label>
+          {{show.t_bus_fees}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_t_hostel_fees">Hostel Fees:</label>
+          {{show.t_hostel_fees}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_mess_fees">Mess Fees:</label>
+          {{show.t_mess_fees}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_t_clinic_fees">Clinical Fee:</label>
+          {{show.t_clinic_fees}}
+      </div>
+    </div><br>
+    <div class="row">
+        <div class="col-md-2">
+            <label for="id_t_actual_fees">Actual Amount:</label>
+            {{show.t_actual_fees}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_t_concession">Concession:</label>
+            {{show.t_concession}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_t_balance">Balance:</label>
+            {{show.t_balance}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_t_currently_paid">Currently Paid:</label>
+            {{show.t_currently_paid}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_t_net_pay">Net Payable Amount:</label>
+            {{show.t_net_pay}}
+        </div>
+    </div>
+    </div>
+    <div id="fourthyr" class="tab-pane fade">
+        <center><h2 id="fourth"><a href="{% url 'post_edit' pk=show.pk %}" target="_blank">Fourth Year Fees</a></h2></center>
+    <hr style="height:1px; border-width:1px; color:gray; background-color:gray">
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_fo_tuition_fee">Tuition Fees:</label>
+          {{show.fo_tuition_fee}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_development_fee">Development Fees:</label>
+          {{show.fo_development_fee}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_lab_computer_fee">Lab, Computer &amp; A/V Aids Fees:</label>
+          {{show.fo_lab_computer_fee}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_library">Library &amp; Magazine :</label>
+          {{show.fo_library}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_fo_sports_activities">Sports &amp; Extracurricular activities :</label>
+          {{show.fo_sports_activities}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_college_exam">College Exam Fees:</label>
+          {{show.fo_college_exam}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_student_welfare">Student's Welfare:</label>
+          {{show.fo_student_welfare}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_bus_fees">Conveyance for Clinical (Bus):</label>
+          {{show.fo_bus_fees}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+          <label for="id_fo_hostel_fees">Hostel Fees:</label>
+          {{show.fo_hostel_fees}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_mess_fees">Mess Fees:</label>
+          {{show.fo_mess_fees}}
+      </div>
+      <div class="col-md-3">
+          <label for="id_fo_clinic_fees">Clinical Fee:</label>
+          {{show.fo_clinic_fees}}
+      </div>
+    </div><br>
+    <div class="row">
+        <div class="col-md-2">
+            <label for="id_fo_actual_fees">Actual Amount:</label>
+            {{show.fo_actual_fees}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_fo_concession">Concession:</label>
+            {{show.fo_concession}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_fo_balance">Balance:</label>
+            {{show.fo_balance}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_fo_currently_paid">Currently Paid:</label>
+            {{show.fo_currently_paid}}
+        </div>
+        <div class="col-md-2">
+            <label for="id_fo_net_pay">Net Payable Amount:</label>
+            {{show.fo_net_pay}}
+        </div>
+    </div>
+    </div>
+  </div>
+        <div class="content" id="mybutton">
+            <a href="{% url 'details' %}?fid={{ show.id }}" target="_blank" class="feedback button">Print</a>
+            <a href="{% url 'fees_up' pk=show.pk %}" target="_blank" class="feedback button">Fees Update</a>
+        </div><br>
+    </div>
+{% endblock %}

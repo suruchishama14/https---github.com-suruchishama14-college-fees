@@ -1,0 +1,378 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Bethany College of Nursing{% endblock %}
+{% block body %}
+<meta charset="UTF-8">
+<script type="text/javascript">
+$("#id_f_net_pay, #id_f_actual_fees, #id_f_concession, #id_s_actual_fees, #id_s_concession, #id_s_net_pay, #id_t_actual_fees, #id_t_concession, #id_t_net_pay, #id_fo_actual_fees, #id_fo_concession, #id_fo_net_pay").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+               return false;
+     }
+});
+
+$(function() {
+    $("#id_f_actual_fees, #id_f_concession, #id_s_actual_fees, #id_s_concession, #id_t_actual_fees, #id_t_concession, #id_fo_actual_fees, #id_fo_concession").on("keydown keyup", per);
+ function per() {
+     var NP_f = (
+         Number($("#id_f_actual_fees").val()) - Number($("#id_f_concession").val())
+    );
+     $("#id_f_net_pay").val(NP_f);
+
+      var NP_s = (
+         Number($("#id_s_actual_fees").val()) - Number($("#id_s_concession").val())
+    );
+     $("#id_s_net_pay").val(NP_s);
+
+      var NP_t = (
+         Number($("#id_t_actual_fees").val()) - Number($("#id_t_concession").val())
+    );
+     $("#id_t_net_pay").val(NP_t);
+
+      var NP_fo = (
+         Number($("#id_fo_actual_fees").val()) - Number($("#id_fo_concession").val())
+    );
+     $("#id_fo_net_pay").val(NP_fo);
+ }
+});
+</script>
+<link rel="stylesheet" href="{% static 'css/fixed button.css' %}">
+<link rel="stylesheet" href="{% static 'css/fixed anchor.css' %}">
+<link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="//cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/js/bootstrap-datetimepicker.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<form action="{% url 'post_edit' post.pk %}" method="post">
+      {% csrf_token %}
+    <div class="container">
+     <div class="row">
+        <div class="col-md-4">
+              {{ form.student_name|as_crispy_field }}
+          </div>
+          <div class="col-md-4">
+              {{ form.fathers_name|as_crispy_field }}
+          </div>
+          <div class="col-md-4">
+              {{ form.dob|as_crispy_field }}
+          </div>
+     </div>
+     <div class="row">
+        <div class="col-md-4">
+    {{form.gender|as_crispy_field}}
+          </div>
+          <div class="col-md-4">
+    {{form.session_of_add|as_crispy_field}}
+          </div>
+          <div class="col-md-4">
+    {{form.course_duration|as_crispy_field}}
+          </div>
+     </div>
+     <div class="row">
+        <div class="col-md-3">
+{{form.course|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.branch|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.contact|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.email|as_crispy_field}}
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-md-3">
+    {{form.bus|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.hostel|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.mess|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.clinic|as_crispy_field}}
+        </div>
+     </div>
+    </div><br>
+    <div class="container-fluid">
+    <center><h2>Select Years</h2></center>
+    <center><ul class="nav nav-tabs nav-justified" style="align-items: center">
+    <li class="active" ><a data-toggle="tab" href="#home">First Year</a></li>
+    <li><a data-toggle="tab" href="#menu1">Second Year</a></li>
+    <li><a data-toggle="tab" href="#menu2">Third Year</a></li>
+    <li><a data-toggle="tab" href="#menu3">Fourth Year</a></li>
+  </ul></center>
+    <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        <br>
+     <div class="row">
+        <div class="col-md-3">
+    {{form.f_tuition_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.f_development_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.admission_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.f_lab_computer_fee|as_crispy_field}}
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-md-3">
+    {{form.f_library|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.f_sports_activities|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.f_college_exam|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.f_student_welfare|as_crispy_field}}
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-md-3">
+    {{form.f_bus_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.f_hostel_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.f_mess_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.f_clinic_fees|as_crispy_field}}
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-md-4">
+    {{form.caution_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+    {{form.clerical_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+    {{form.med_equip|as_crispy_field}}
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-md-4">
+    {{form.uniform_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+    {{form.wel_kit|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+    {{form.prac_rec|as_crispy_field}}
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-md-2">
+    {{form.f_actual_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.f_concession|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.f_balance|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.f_currently_paid|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.f_net_pay|as_crispy_field}}
+        </div>
+     </div>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+     <div class="row">
+        <div class="col-md-3">
+    {{form.s_tuition_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.s_development_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.s_lab_computer_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.s_library|as_crispy_field}}
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-md-4">
+    {{form.s_sports_activities|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+    {{form.s_college_exam|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+    {{form.s_student_welfare|as_crispy_field}}
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-md-3">
+    {{form.s_bus_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.s_hostel_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.s_mess_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.s_clinic_fees|as_crispy_field}}
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-md-2">
+    {{form.s_actual_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.s_concession|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.s_balance|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.s_currently_paid|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.s_net_pay|as_crispy_field}}
+        </div>
+     </div>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+    <div class="row">
+        <div class="col-md-3">
+    {{form.t_tuition_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.t_development_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.t_lab_computer_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.t_library|as_crispy_field}}
+        </div>
+     </div>
+    <div class="row">
+        <div class="col-md-4">
+    {{form.t_sports_activities|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+    {{form.t_college_exam|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+    {{form.t_student_welfare|as_crispy_field}}
+        </div>
+     </div>
+    <div class="row">
+        <div class="col-md-3">
+    {{form.t_bus_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.t_hostel_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.t_mess_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.t_clinic_fees|as_crispy_field}}
+        </div>
+ </div>
+    <div class="row">
+        <div class="col-md-2">
+    {{form.t_actual_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.t_concession|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.t_balance|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.t_currently_paid|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.t_net_pay|as_crispy_field}}
+        </div>
+     </div>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+     <div class="row">
+        <div class="col-md-3">
+    {{form.fo_tuition_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.fo_development_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.fo_lab_computer_fee|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.fo_library|as_crispy_field}}
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-md-4">
+    {{form.fo_sports_activities|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+    {{form.fo_college_exam|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+    {{form.fo_student_welfare|as_crispy_field}}
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-md-3">
+    {{form.fo_bus_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.fo_hostel_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.fo_mess_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+    {{form.fo_clinic_fees|as_crispy_field}}
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-md-2">
+    {{form.fo_actual_fees|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.fo_concession|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.fo_balance|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.fo_currently_paid|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+    {{form.fo_net_pay|as_crispy_field}}
+        </div>
+     </div>
+    </div>
+  </div>
+    <div class="content" id="mybutton">
+        <button class="feedback button" type="submit" value="submit ">Update</button>
+    </div>
+</form>
+{% endblock %}

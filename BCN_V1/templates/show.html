@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Fees Collection{% endblock %}
+<script type="text/javascript">
+        function javascript()
+        {
+             window.print();
+        }
+    </script>
+<style>
+    @media print{.do_not_print {display:none;}}
+</style>
+{% block body %}
+<div class="container">
+    <table class="table table-striped table-hover">
+        <thead class="thead-light">
+            <tr>
+              <th scope="col" style="text-align: center">Receipt no</th>
+              <th scope="col" style="text-align: center">Name</th>
+              <th scope="col" style="text-align: center">Father's Name</th>
+              <th scope="col" style="text-align: center">Date</th>
+              <th scope="col" style="text-align: center">Email</th>
+              <th scope="col" style="text-align: center">Year</th>
+              <th scope="col" style="text-align: center">Type of Fees</th>
+              <th scope="col" style="text-align: center">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for show in shows %}
+            <tr style="text-align: center">
+                <td>{{ show.dos|date:"ond-" }}{{ show.id }}</td>
+                <td>{{ show.student_name }}</td>
+                <td>{{ show.fathers_name }}</td>
+                <td>{{ show.dos|date }}</td>
+                <td>{{ show.email }}</td>
+                <td>{{ show.year }}</td>
+                <td>{{ show.fee_type }}</td>
+                <td>{{ show.fees_amount }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <hr>
+
+
+
+{% endblock %}
